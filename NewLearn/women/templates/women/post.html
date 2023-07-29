@@ -1,0 +1,21 @@
+{% extends 'women/base.html' %}
+
+{% block content %}
+    <a href="{{request.META.HTTP_REFERER}}" id="back-button"><i class="fa-solid fa-backward" style="color: #ffffff;"></i> Назад</a>
+    <h1>{{post.title}}</h1>
+
+    {% if post.photo %}
+        <p><img class="img-article-left" src="{{ post.photo.url }}"></p>
+    {% endif %}
+
+    {{ post.content|linebreaks }}
+    {% if request.user == post.author %}
+        <p id="action-button">
+        <a href="{% url 'post_update' post.slug %}">
+            <i class="fa-solid fa-pen-nib" style="color: #ffffff;"></i> Обновить статью</a><br>
+
+        <a href="{% url 'post_delete' post.slug %}">
+            <i class="fa-solid fa-trash" style="color: #ffffff;"></i> Удалить статью</a>
+        </p>
+    {% endif %}
+{% endblock %}
