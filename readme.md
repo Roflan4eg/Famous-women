@@ -1,1 +1,1 @@
-# Сайт с биографией известных женщин
+# Django website with biographies of famous women.
